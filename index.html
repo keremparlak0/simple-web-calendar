@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eğitim Takvimi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <div class="nav-buttons">
+                <button id="prevBtn">&lt;</button>
+                <div class="month-year" id="monthYearDisplay"></div>
+                <button id="nextBtn">&gt;</button>
+            </div>
+            <button id="addEventBtn" class="add-event-btn">Eğitim Ekle</button>
+        </div>
+        <div class="calendar-grid weekday-names">
+            <div>Pzt</div>
+            <div>Sal</div>
+            <div>Çar</div>
+            <div>Per</div>
+            <div>Cum</div>
+            <div>Cmt</div>
+            <div>Paz</div>
+        </div>
+        <div class="calendar-grid" id="calendarDays">
+            <!-- Günler buraya JavaScript ile eklenecek -->
+        </div>
+        <div class="today-button-container">
+            <button id="todayBtn">Bugün</button>
+        </div>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
+    <div id="messageBox" class="message-box"></div>
+
+    <!-- Ay ve Yıl Seçme Modalı -->
+    <div id="monthYearPickerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ay ve Yıl Seçin</h3>
+            </div>
+            <div class="modal-body">
+                <input type="month" id="monthYearInput" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-btn" id="closeMonthYearPickerModal">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Eğitim Ekleme Modalı -->
+    <div id="addEventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Yeni Eğitim Ekle</h3>
+            </div>
+            <form id="addEventForm">
+                <div class="modal-body">
+                    <label for="eventTitle">Eğitim Adı:</label>
+                    <input type="text" id="eventTitle" required>
+
+                    <label for="startDate">Başlangıç Tarihi:</label>
+                    <input type="date" id="startDate" required>
+
+                    <label for="endDate">Bitiş Tarihi:</label>
+                    <input type="date" id="endDate" required>
+
+                    <label for="eventTrainer">Eğitmen:</label>
+                    <input type="text" id="eventTrainer">
+
+                    <label for="eventContent">İçerik:</label>
+                    <textarea id="eventContent" rows="4"></textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel-btn" id="closeModalBtn">İptal</button>
+                    <button type="submit" class="save-btn">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Eğitim Detayları Modalı -->
+    <div id="eventDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="eventDetailsTitle"></h3>
+            </div>
+            <div class="modal-body">
+                <p><strong id="eventDetailsDates"></strong></p>
+                <h4>Eğitmen</h4>
+                <p id="eventDetailsTrainer"></p>
+                <h4>İçerik</h4>
+                <p id="eventDetailsContent"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-btn" id="closeDetailsModalBtn">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
